@@ -1,10 +1,9 @@
 import React from 'react';
+import { Countries } from './pages/countries/Countries';
 
-function App() {
+const App = () => {
   return (
-        <div className="container">
-            <h1 className="text-center">Merci</h1>
-        </div>
+      <Countries/>
   );
 }
 

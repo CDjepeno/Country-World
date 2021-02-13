@@ -1,0 +1,1 @@
+export const API_ALL_COUNTRIES = "https://restcountries.eu/rest/v2/all";
