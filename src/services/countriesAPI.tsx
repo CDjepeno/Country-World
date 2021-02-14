@@ -1,12 +1,5 @@
 import axios from 'axios';
-import { API_ALL_COUNTRIES } from '../config';
-import { Countries } from '../pages/countries/Countries';
-
-// interface Countries {
-//     name: string
-//     region: string
-//     capital: string
-// }
+import { API_ALL_COUNTRIES, API_REGION } from '../config';
 
 export default class CountriesService {
 
@@ -17,13 +10,12 @@ export default class CountriesService {
         .catch(error => this.handleError(error));
     }
 
-    // static getobject(id: number): Promise<Object|null> {
-    //     return axios
-    //     .get(url)
-    //     .then(response => response.json())
-    //     .then(data => this.isEmpty(data) ? null : data)
-    //     .catch(error => this.handleError(error));
-    // }
+    static getCountriesRegion(region: string): Promise<Object|null> {
+        return axios
+        .get(API_REGION + region)
+        .then(response => response.data)
+        .catch(error => this.handleError(error));
+    }
 
     // static updateobject(object: object): Promise<Object> {
     //     return axios
