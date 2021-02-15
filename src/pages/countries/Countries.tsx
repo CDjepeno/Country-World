@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../../components/button/button';
 import { Title } from '../../components/title/Title';
-import { Pagination } from '../../services/Pagination';
 import CountriesService from '../../services/countriesAPI';
 import { Country } from '../../components/country/country';
 
@@ -19,6 +18,8 @@ export const Countries: React.FC = ( ) => {
     const [countries, setCountries] = useState<Countries[]| any>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [region, setRegion] = useState<any>(null)
+    const [currentpage, setCurrentPage] = useState<number>(1)
+    const itemsPerPage = 20;
 
 
     useEffect(() => {
@@ -40,11 +41,25 @@ export const Countries: React.FC = ( ) => {
                     setRegion(region)
             })
         }
+    }    
+
+    const handlePageChange = (value: any) => {
+        setCurrentPage(value)
+        
     }
-    
-    // console.log(countries.region);
-    
-    
+        
+    const length = countries.length;
+    const pagesCount = Math.ceil(length / itemsPerPage);
+    const pages = []
+    for(let i = 1; i <= pagesCount ; i++) {
+        pages.push(
+            <Button text={i} key={i} currentPage={currentpage === i} clic={() => handlePageChange(i)}/>
+        );
+    }
+        
+    const start = currentpage * itemsPerPage - itemsPerPage;
+    const paginated = countries.slice(start, start + itemsPerPage);
+
     return (<>
         <div className="container">
             <Title text="Liste des pays du monde"/>
@@ -56,15 +71,15 @@ export const Countries: React.FC = ( ) => {
                 <Button 
                     handle={() => handleRegion('europe')} 
                     text="Europe" region={region==='europe'}/>
-                <Button handle={() => handleRegion('africa')} text="Afrique" region={region==='africa'}/> 
-                <Button handle={() => handleRegion('asia')} text="Asie" region={region==='asia'}/>
-                <Button handle={() => handleRegion('americas')} text="Amerique" region={region==='americas'}/>
-                <Button handle={() => handleRegion('oceania')} text="Oceanie" region={region==='oceania'}/> 
+                <Button clic={() => handleRegion('africa')} text="Afrique" region={region==='africa'}/> 
+                <Button clic={() => handleRegion('asia')} text="Asie" region={region==='asia'}/>
+                <Button clic={() => handleRegion('americas')} text="Amerique" region={region==='americas'}/>
+                <Button clic={() => handleRegion('oceania')} text="Oceanie" region={region==='oceania'}/> 
                 <p>Nombre de pays: <span className="badge badge-success">{countries.length}</span></p>
             </div>
             {loading ? <div>Chargement...</div> : 
                 <div className="row no-gutters">
-                    {countries.map((country: any, index:any) => {
+                    {paginated.map((country: any, index:any) => {
                         return (
                             <Country 
                                 key={index} 
@@ -77,7 +92,7 @@ export const Countries: React.FC = ( ) => {
                     })}
                 </div>
             } 
-            <Pagination />
+            {pages}
         </div>
     </>)
 }

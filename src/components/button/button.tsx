@@ -1,17 +1,19 @@
 import React from 'react';
 
 type Props = {
-    text: string
-    handle: any
-    region: boolean
+    text: any
+    handle?: any
+    region?: boolean
+    currentPage?: boolean
+    clic?: any
 }
 
-export const Button: React.FC<Props> = ( { text, handle, region, } ) => {
+export const Button: React.FC<Props> = ( { text, clic, region, currentPage } ) => {
     return (<>
-        {region ?
-            <button className="btn btn-info" onClick={handle}>{text}</button>
+        {region || currentPage ?
+            <button className="btn btn-info my-3" onClick={clic}>{text}</button>
             : 
-            <button className="btn btn-info opacity-5" style={{opacity:0.7}} onClick={handle}>{text}</button>
+            <button className="btn btn-info my-3" style={{opacity:0.7}} onClick={clic}>{text}</button>
         }
     </>)
 }
