@@ -45,7 +45,7 @@ export const Countries: React.FC = ( ) => {
 
     const handlePageChange = (value: any) => {
         setCurrentPage(value)
-        
+
     }
         
     const length = countries.length;
@@ -87,6 +87,7 @@ export const Countries: React.FC = ( ) => {
                                 region={country.region} 
                                 capital={country.capital} 
                                 flag={country.flag} 
+                                money={country.currencies[0].name}
                             />
                         )
                     })}

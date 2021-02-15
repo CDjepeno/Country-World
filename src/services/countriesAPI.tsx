@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_ALL_COUNTRIES, API_REGION } from '../config';
+import { API_ALL_COUNTRIES, API_REGION, API_COUNTRY_NAME } from '../config';
 
 export default class CountriesService {
 
@@ -14,6 +14,13 @@ export default class CountriesService {
         return axios
         .get(API_REGION + region)
         .then(response => response.data)
+        .catch(error => this.handleError(error));
+    }
+
+    static getCountryByName(name: string): Promise<Object|null> {
+        return axios
+        .get(API_COUNTRY_NAME + name)
+        .then(response => response.data[0])
         .catch(error => this.handleError(error));
     }
 
