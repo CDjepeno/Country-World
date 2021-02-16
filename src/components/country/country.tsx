@@ -13,7 +13,7 @@ type Props = {
     money?:string
 }
 
-export const Country: React.FC<Props> = ({ flag ,name, key, capital, region, match, detail, money  }) => {
+export const Country: React.FC<Props> = ({ flag ,name, key, capital, region, detail, money  }) => {
     console.log(money);
     
     return (   

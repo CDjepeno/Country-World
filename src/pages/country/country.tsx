@@ -22,9 +22,7 @@ const CountryPage: React.FC<RouteComponentProps<Props>> = ({match}) => {
             setLoading(false)
         })
     }, [])
-    
-    console.log(country);
-    
+        
     
     return ( 
         <div className="container">

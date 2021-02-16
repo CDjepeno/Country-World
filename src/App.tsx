@@ -13,7 +13,6 @@ const App = () => {
             <Route path="/" exact render={() => <h1>Page d'acceuil</h1>} />
             <Route path="/pays" exact component={Countries} />
             <Route path="/pays/:id" component={CountryPage}/>
-            <Route path="/pays/:id" component={CountryPage}/>
             <Route component={PageNotFound} />
         </Switch>
       </BrowserRouter>

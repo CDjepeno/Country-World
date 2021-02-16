@@ -1,13 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export interface NabarProps {
     
 }
 
-// <Link to="/">Acceuil</Link>
-// <Link to="/pays">Les pays</Link>
- 
 const Navbar: React.FC<NabarProps> = () => {
     return ( 
         <nav className="navbar navbar-expand-lg navbar-dark bg-info">
@@ -18,10 +15,10 @@ const Navbar: React.FC<NabarProps> = () => {
 
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item" >
+                    <li className="nav-item">
                         <NavLink to="/" exact className="nav-link">Acceuil</NavLink>
                     </li>
-                    <li className="nav-item" >
+                    <li className="nav-item">
                         <NavLink to="/pays" exact className="nav-link">Pays</NavLink>
                     </li>
                 </ul>

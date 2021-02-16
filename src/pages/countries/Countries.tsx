@@ -65,16 +65,29 @@ export const Countries: React.FC = ( ) => {
             <Title text="Liste des pays du monde"/>
             <div className="row">
                 <Button 
-                    handle={() => handleRegion('all')} 
+                    clic={() => handleRegion('all')} 
                     text="tous" region={region==='all'}
                 />
                 <Button 
-                    handle={() => handleRegion('europe')} 
-                    text="Europe" region={region==='europe'}/>
-                <Button clic={() => handleRegion('africa')} text="Afrique" region={region==='africa'}/> 
-                <Button clic={() => handleRegion('asia')} text="Asie" region={region==='asia'}/>
-                <Button clic={() => handleRegion('americas')} text="Amerique" region={region==='americas'}/>
-                <Button clic={() => handleRegion('oceania')} text="Oceanie" region={region==='oceania'}/> 
+                    clic={() => handleRegion('europe')} 
+                    text="Europe" region={region==='europe'}
+                />
+                <Button 
+                    clic={() => handleRegion('africa')} 
+                    text="Afrique" region={region==='africa'}
+                /> 
+                <Button 
+                    clic={() => handleRegion('asia')} 
+                    text="Asie" region={region==='asia'}
+                />
+                <Button 
+                    clic={() => handleRegion('americas')} 
+                    text="Amerique" region={region==='americas'}
+                />
+                <Button 
+                    clic={() => handleRegion('oceania')} 
+                    text="Oceanie" region={region==='oceania'}
+                /> 
                 <p>Nombre de pays: <span className="badge badge-success">{countries.length}</span></p>
             </div>
             {loading ? <div>Chargement...</div> : 
