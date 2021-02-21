@@ -5,6 +5,6 @@
 - Utilisation des hooks.
 - Utilisation du router de react.
 - Création d'une pagination.
-- classification des pays par continent.
+- Classification des pays par continent.
 
 
